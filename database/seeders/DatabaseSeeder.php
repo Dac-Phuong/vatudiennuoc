@@ -1,0 +1,27 @@
+<?php
+namespace Database\Seeders;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        \App\Models\User::factory(10)->create();
+
+        \App\Models\User::factory()->create([
+            'username' => 'Admin',
+            'account'  => 'Admin',
+            'email'    => 'admin@gmail.com',
+            'phone'    => '0334262754',
+            'password' => Hash::make('admin@12345'),
+            'role'     => 100,
+            'balance'  => 100000,
+        ]);
+    }
+}
