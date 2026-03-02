@@ -44,7 +44,7 @@ class NewsService extends BaseService
                 'id', 'title', 'views', 'is_show', 'is_pin', 'thumbnail',
                 'category_id', 'slug', 'short_description', 'author_id', 'created_at',
             ])
-                ->with(['category:id,name', 'author:id,full_name', 'tags:id,name'])
+                ->with(['category:id,name', 'author:id,account', 'tags:id,name'])
                 ->orderBy($sortField, $direction)
                 ->paginate($per_page)
                 ->appends($data);
@@ -214,7 +214,7 @@ class NewsService extends BaseService
 
     public function findBySlug(string $slug)
     {
-        $news = $this->model->where('slug', $slug)->with(['author:id,full_name', 'category:id,name,slug', 'tags'])->first();
+        $news = $this->model->where('slug', $slug)->with(['author:id,account', 'category:id,name,slug', 'tags'])->first();
         if ($news) {
             $news->views = $news->views + 1;
             $news->save();
@@ -265,7 +265,7 @@ class NewsService extends BaseService
         try {
             return $this->model
                 ->select('id', 'thumbnail', 'title', 'short_description', 'slug', 'created_at', 'author_id')
-                ->with('author:id,full_name')
+                ->with('author:id,account')
                 ->where('is_pin', 1)
                 ->limit(10)
                 ->get();
@@ -281,7 +281,7 @@ class NewsService extends BaseService
         try {
             return $this->model
                 ->select('id', 'thumbnail', 'title', 'short_description', 'slug', 'created_at', 'author_id')
-                ->with('author:id,full_name')
+                ->with('author:id,account')
                 ->where('is_pin', 1)
                 ->latest()
                 ->first();

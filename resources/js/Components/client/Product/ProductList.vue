@@ -1,6 +1,7 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import { ref } from 'vue'
+import ShowImage from './ShowImage.vue';
 
 const props = defineProps({
     product: {
@@ -14,7 +15,7 @@ const showDialog = ref(false)
 </script>
 <template>
     <div class="bg-white rounded-lg shadow-sm border p-4 flex gap-4 hover:shadow-md transition-shadow duration-200">
-        <Image :src="product.thumbnail" :alt="product.name" class="w-24 h-24 object-cover rounded-lg flex-shrink-0" />
+        <ShowImage :src="product.thumbnail" :alt="product.name" class="w-24 h-24 object-cover rounded-lg flex-shrink-0" />
         <div class="flex-1">
             <div class="flex justify-between items-start">
                 <div>
@@ -39,7 +40,7 @@ const showDialog = ref(false)
     <Dialog v-model:visible="showDialog" header="" modal :style="{ width: '60rem' }" class="custom-dialog">
         <div class="flex flex-col md:flex-row gap-6 py-4">
             <div class="flex-shrink-0 flex justify-center items-center h-full w-full md:w-1/2">
-                <Image preview :src="product.thumbnail" :alt="product.name"
+                <ShowImage preview :src="product.thumbnail" :alt="product.name"
                     class="w-full h-[450px] object-cover shadow-lg border img-fluid" />
             </div>
             <div class="flex flex-col justify-between w-full md:w-1/2">

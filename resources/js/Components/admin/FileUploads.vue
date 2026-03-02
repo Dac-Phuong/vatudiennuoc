@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { router } from '@inertiajs/vue3'
 import { usePrimeVue } from "primevue/config";
 import useNotify from "@/Composables/useNotify";
+import ShowImage from "../client/Product/ShowImage.vue";
 const props = defineProps({
     name: { type: String, default: "images[]" },
     url: { type: String, default: "" },
@@ -122,7 +123,7 @@ const deleteImage = (id) => {
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
                         <div v-for="(file, index) in files" :key="file.name + index"
                             class="p-2 border rounded flex flex-col items-center gap-4 relative">
-                            <Image preview :alt="file.name" :src="file.objectURL" class="w-full show-img img-fluid" />
+                            <ShowImage preview :alt="file.name" :src="file.objectURL" class="w-full show-img img-fluid" />
                             <Button icon="pi pi-times" @click="removeTemplatingFile(file, removeFileCallback, index)"
                                 variant="outlined" rounded severity="danger" />
                         </div>
@@ -134,7 +135,7 @@ const deleteImage = (id) => {
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
                         <div v-for="(file, index) in uploadedFiles" :key="file.name + index"
                             class="p-2 border rounded flex flex-col items-center gap-4 relative">
-                            <Image preview :alt="file.name" :src="file.objectURL" class="w-full show-img img-fluid" />
+                            <ShowImage preview :alt="file.name" :src="file.objectURL" class="w-full show-img img-fluid" />
                             <Button icon="pi pi-times"
                                 @click="removeTemplatingFile(file, removeUploadedFileCallback, index)"
                                 variant="outlined" rounded severity="danger" />
@@ -147,7 +148,7 @@ const deleteImage = (id) => {
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
                         <div v-for="(file, index) in images" :key="file.id"
                             class="p-2 border rounded flex flex-col items-center gap-4 relative">
-                            <Image preview :alt="file?.name" :src="file?.image_path || file.url"
+                            <ShowImage preview :alt="file?.name" :src="file?.image_path || file.url"
                                 class="w-full show-img img-fluid" />
                             <Button icon="pi pi-times" @click="deleteImage(file.id)" variant="outlined" rounded
                                 severity="danger" />

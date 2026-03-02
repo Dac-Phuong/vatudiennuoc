@@ -57,7 +57,8 @@ function isOutsideClicked(event) {
 </script>
 
 <template>
-    <ConfirmPopup id="confirm" aria-label="popup" />
+    <!-- <ConfirmPopup id="confirm" aria-label="popup" /> -->
+    <ConfirmDialog />
     <div class="layout-wrapper" :class="containerClass">
         <AppTopbar />
         <AppSidebar />

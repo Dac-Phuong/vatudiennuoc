@@ -7,6 +7,7 @@ import NewsSection from '@/Components/client/sections/NewsSection.vue';
 import ClientLayout from '@/Layouts/ClientLayout.vue';
 import { Head, usePage } from '@inertiajs/vue3';
 const { settings } = usePage().props;
+
 const props = defineProps({
     productSale: Object,
     ProductBestSelling: Object,
@@ -15,25 +16,8 @@ const props = defineProps({
     news: Object
 })
 
-const pageTitle = settings?.name || 'Trang chủ';
-const pageDescription = 'Chuyên bán các thiết bị điện - nước chất lượng, uy tín, giá tốt. Giao hàng toàn quốc.';
 </script>
 <template>
-
-    <Head :title="pageTitle">
-        <meta name="description" :content="pageDescription" />
-        <meta name="keywords"
-            content="thiết bị điện, thiết bị nước, công tắc, ổ cắm, đèn led, máy bơm, van nước, HTDC" />
-        <meta name="author" content="Cty TNHH Thương mại Tổng hợp HTDC" />
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:title" :content="pageTitle" />
-        <meta property="og:description" :content="pageDescription" />
-        <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:url" content="https://dacphuong.site" />
-        <!-- Canonical -->
-        <link rel="canonical" href="https://dacphuong.site" />
-    </Head>
     <ClientLayout>
         <HeroSection />
         <ProductOutstanding :productSale="productSale" />

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('is_show')->default(true);
             $table->boolean('is_pin')->default(false);
             $table->string('thumbnail')->nullable();
+            $table->string('tags')->nullable();
             $table->string('short_description')->nullable();
             $table->timestamps();
             // Foreign key constraints

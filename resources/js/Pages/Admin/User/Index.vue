@@ -31,7 +31,7 @@ const modal = ref({
 
 const formEditUser = useForm({
     id: null,
-    full_name: '',
+    account: '',
     email: '',
     role: 0,
     locked: false,
@@ -158,9 +158,9 @@ const getRole = (role) => ({
                         <span>{{ index + 1 + lazyParams.first }}</span>
                     </template>
                 </Column>
-                <Column field="full_name" header="Họ và tên">
+                <Column field="account" header="Họ và tên">
                     <template #body="{ data }">
-                        <span>{{ data.full_name }}</span>
+                        <span>{{ data.account }}</span>
                     </template>
                 </Column>
                 <Column field="email" header="Email" style="min-width: 16rem">
@@ -209,11 +209,11 @@ const getRole = (role) => ({
         <Dialog v-model:visible="modal.edit" modal header="Cập nhật người dùng" :style="{ width: '30rem' }">
             <form action="" @submit.prevent="submitEditUser">
                 <div>
-                    <label for="full_name"
+                    <label for="account"
                         class="block text-sm mb-2 font-medium text-surface-700 dark:text-surface-200">Họ và
                         tên</label>
-                    <InputText id="full_name" type="text" class="mt-1 block w-full" placeholder="Họ và tên"
-                        v-model="formEditUser.full_name" required autocomplete="full_name" />
+                    <InputText id="account" type="text" class="mt-1 block w-full" placeholder="Họ và tên"
+                        v-model="formEditUser.account" required autocomplete="account" />
                 </div>
                 <div class="mt-4">
                     <label for="email" class="block text-sm mb-2 font-medium text-surface-700 dark:text-surface-200">

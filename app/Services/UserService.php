@@ -27,17 +27,17 @@ class UserService extends BaseService
             if ($search) {
                 $query->where('email', 'like', "%{$search}%")
                     ->orWhere('phone', 'like', "%{$search}%")
-                    ->orWhere('full_name', 'like', "%{$search}%");
+                    ->orWhere('account', 'like', "%{$search}%");
             }
 
             $direction = $sortOrder == 1 ? 'asc' : 'desc';
             // Chỉ cho phép sort theo các field hợp lệ (tránh SQL injection)
-            $allowedSortFields = ['id', 'full_name', 'role', 'email', 'balance', 'locked', 'phone', 'created_at'];
+            $allowedSortFields = ['id', 'account', 'role', 'email', 'balance', 'locked', 'phone', 'created_at'];
             if (! in_array($sortField, $allowedSortFields)) {
                 $sortField = 'created_at';
             }
             // Query
-            $users = $query->select('id', 'full_name', 'role', 'email', 'balance', 'locked', 'phone', 'created_at')
+            $users = $query->select('id', 'account', 'role', 'email', 'balance', 'locked', 'phone', 'created_at')
                 ->orderBy($sortField, $direction)
                 ->paginate($per_page);
 

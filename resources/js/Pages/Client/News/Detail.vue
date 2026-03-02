@@ -69,7 +69,7 @@ const copyLink = async () => {
                                 <div class="flex items-center justify-between flex-wrap gap-4 mb-6 pb-6 border-b">
                                     <div class="flex items-center space-x-4">
                                         <div>
-                                            <p class="font-semibold text-gray-900">{{ news.author.full_name }}</p>
+                                            <p class="font-semibold text-gray-900">{{ news.author.account }}</p>
                                             <p class="text-sm text-gray-600">xin chào mọi người</p>
                                         </div>
                                     </div>
@@ -115,8 +115,7 @@ const copyLink = async () => {
                             <div class="mt-8 pt-6 border-t" v-if="news.tags.length > 0">
                                 <div class="flex items-center flex-wrap gap-2">
                                     <span class="text-sm font-medium text-gray-700">Tags:</span>
-                                    <Badge v-for="tag in news.tags" :key="tag" :value="tag"
-                                        class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs" />
+                                    <Badge v-for="tag in news.tags" :key="tag" :value="tag.name" class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs" />
                                 </div>
                             </div>
                         </div>

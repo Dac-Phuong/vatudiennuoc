@@ -1,6 +1,7 @@
 <script setup>
 import { Link, usePage } from '@inertiajs/vue3';
 import { ref } from 'vue'
+import ShowImage from './ShowImage.vue';
 
 const props = defineProps({
     product: {
@@ -21,13 +22,12 @@ const responsiveOptions = ref([
     },
 
 ]);
-
 </script>
 <template>
     <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-200"
         :class="is_m ? 'm-1 md:m-2' : ''">
         <div class="relative">
-            <Image :src="product?.thumbnail" :alt="product?.name" class="w-full object-cover prd-image rounded-t-lg" />
+            <ShowImage :src="product?.thumbnail" :alt="product?.name" class="w-full object-cover prd-image rounded-t-lg" style="height: 180px;" />
             <div class="absolute top-2 right-2 flex gap-2">
                 <Button icon="pi pi-eye" severity="secondary" rounded outlined size="small" @click="showDialog = true"
                     class="bg-white/80 backdrop-blur-sm" />
@@ -41,35 +41,34 @@ const responsiveOptions = ref([
 
         <div class="px-4 pb-3 pt-1">
             <h3 class="font-semibold text-gray-900 mb-1 line-clamp-2 text-base">{{ product?.name
-            }}</h3>
+                }}</h3>
             <p class="text-sm text-primary mb-1">{{ product?.category?.name }}</p>
             <div class="flex items-center justify-between">
-                <div v-if="product?.price > 0" class="flex items-center gap-2">
+                <!-- <div v-if="product?.price > 0" class="flex items-center gap-2">
                     <span class="text-lg font-bold text-emerald-600">
                         {{ product.price }}
                     </span>
-                </div>
-                <span v-else class="text-sm text-red-500 mt-0 block text-center">Liên hệ</span>
+                </div> -->
+                <span class="text-sm text-red-500 mt-0 block text-center">Liên hệ</span>
             </div>
             <Link :href="route('products.detail', product?.slug || '')" class="mt-3 block">
-            <Button label="Xem chi tiết" icon="pi pi-eye" size="small"
-                class="w-full mt-1 bg-blue-500 border-blue-500 hover:bg-blue-600" />
+                <Button label="Xem chi tiết" icon="pi pi-eye" size="small"
+                    class="w-full mt-1 bg-blue-500 border-blue-500 hover:bg-blue-600" />
             </Link>
         </div>
     </div>
     <Dialog v-model:visible="showDialog" header="" modal :style="{ width: '60rem' }" class="custom-dialog">
         <div class="flex flex-col md:flex-row gap-6 py-4">
             <div class="flex-shrink-0 flex justify-center items-center h-full w-full md:w-1/2">
-                <Image v-if="product.images && product.images?.length === 0" preview :src="product.thumbnail"
+                <ShowImage v-if="product.images && product.images?.length === 0" preview :src="product.thumbnail"
                     :alt="product.name" class="w-full h-[450px] object-cover shadow-lg border img-fluid" />
                 <Galleria v-else :value="product.images" :responsiveOptions="responsiveOptions" :numVisible="5"
                     :circular="true" :showItemNavigators="true" :showThumbnails="true" class="w-full h-[450px]">
                     <template #item="slotProps">
-                        <img :src="slotProps.item.image_path" :alt="slotProps.item?.alt"
-                            style="width: 100%; height: 350px;" />
+                        <ShowImage :src="slotProps.item.image_path" :alt="slotProps.item?.alt" class="w-full object-cover prd-image rounded-t-lg"  style="width: 100%; height: 350px;"/>
                     </template>
                     <template #thumbnail="slotProps">
-                        <img :src="slotProps.item.image_path" :alt="slotProps.item?.alt" style="height: 100px;" />
+                        <ShowImage :src="slotProps.item.image_path" :alt="slotProps.item?.alt" style="height: 100px; width: 100px;" />
                     </template>
                 </Galleria>
             </div>

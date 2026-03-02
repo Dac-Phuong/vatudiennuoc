@@ -1,10 +1,8 @@
 <?php
 namespace App\Services;
 
-use App\Helpers\AdminLogs;
 use App\Models\Setting;
 use App\Traits\ThrowsValidationException;
-use Illuminate\Support\Facades\Log;
 
 class SettingService extends BaseService
 {
@@ -13,24 +11,32 @@ class SettingService extends BaseService
     {
         $this->model = new Setting();
     }
-    public function updateSetting(array $data): bool
+    public function updateSetting($request): bool
     {
         try {
-            foreach ($data as $key => $value) {
-                $this->model->updateOrCreate(
-                    ['key' => $key],
-                    ['value' => is_array($value) ? json_encode($value) : $value]
-                );
+            foreach ($request->all() as $key => $value) {
+
+                if (in_array($key, ['_token', '_method'])) {
+                    continue;
+                }
+
+                if ($request->hasFile($key)) {
+                    $file = $request->file($key);
+
+                    if ($file && $file->isValid()) {
+                        $path = parent::uploadImage($file);
+                        Setting::updateOption($key, $path);
+                    }
+                } else {
+                    Setting::updateOption($key, $value);
+                }
             }
-            AdminLogs::store("Đã cập nhật <strong>cài đặt</strong>", auth()->id(), request()->ip());
+
             return true;
+
         } catch (\Throwable $th) {
-            Log::error('Update setting failed', [
-                'message' => $th->getMessage(),
-                'trace'   => $th->getTraceAsString(),
-                'data'    => $data,
-            ]);
-            return false;
+            $this->throwValidation("Lỗi khi lưu cấu hình: " . $th->getMessage());
+            return false; 
         }
     }
 

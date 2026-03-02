@@ -58,7 +58,7 @@ const onPageChange = ({ page, rows }) => {
 
                                     <div class="mt-4 flex items-center justify-between text-sm text-gray-500">
                                         <div class=" gap-2">
-                                            <span>Tác giả: {{ item.author?.full_name }}</span>
+                                            <span>Tác giả: {{ item.author?.account }}</span>
                                             <br>
                                             <span>lượt xem: {{ formatViews(item.views) }}</span>
                                         </div>

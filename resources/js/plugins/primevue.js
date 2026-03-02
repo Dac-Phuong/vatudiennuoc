@@ -50,12 +50,21 @@ import InputNumber from "primevue/inputnumber";
 import Card from "primevue/card";
 import FileUpload from "primevue/fileupload";
 import Tooltip from "primevue/tooltip";
-import IconField from "primevue/iconfield";
-import InputIcon from "primevue/inputicon";
-import Dropdown from "primevue/dropdown";
-import Paginator from "primevue/paginator";
-import Breadcrumb from "primevue/breadcrumb";
-import ProgressSpinner from "primevue/progressspinner";
+import ProgressBar from "primevue/progressbar";
+import ToggleButton from 'primevue/togglebutton';
+import TabView from 'primevue/tabview';
+import Divider from 'primevue/divider';
+import ToggleSwitch from 'primevue/toggleswitch';
+import Avatar from 'primevue/avatar';
+import AvatarGroup from 'primevue/avatargroup'; 
+import Paginator from 'primevue/paginator';
+import FloatLabel from 'primevue/floatlabel';
+import Password from 'primevue/password';
+import InputGroup from 'primevue/inputgroup';
+import InputGroupAddon from 'primevue/inputgroupaddon';
+import Dropdown from 'primevue/dropdown';
+import IconField from 'primevue/iconfield';
+import InputIcon from 'primevue/inputicon';
 
 export default {
     install(app) {
@@ -102,7 +111,7 @@ export default {
         app.component("Checkbox", Checkbox);
         app.component("CheckboxGroup", CheckboxGroup);
         app.directive("styleclass", StyleClass);
-        app.directive("Message", Message);
+        app.component("Message", Message);
         app.component("Textarea", Textarea);
         app.component("Tag", Tag);
         app.component("Menu", Menu);
@@ -118,12 +127,21 @@ export default {
         app.component("InputNumber", InputNumber);
         app.component("Card", Card);
         app.component("FileUpload", FileUpload);
+        app.component("ProgressBar", ProgressBar);
+        app.component("ToggleButton", ToggleButton);
+        app.component("TabView", TabView);
+        app.component("Divider", Divider);
+        app.component("ToggleSwitch", ToggleSwitch);
+        app.component("Avatar", Avatar);
+        app.component("Paginator", Paginator);
+        app.component("AvatarGroup", AvatarGroup);
+        app.component("FloatLabel", FloatLabel);
+        app.component("Password", Password);
+        app.component("InputGroup", InputGroup);
+        app.component("InputGroupAddon", InputGroupAddon);
+        app.component("Dropdown", Dropdown);
         app.component("IconField", IconField);
         app.component("InputIcon", InputIcon);
         app.directive("tooltip", Tooltip);
-        app.component("Dropdown", Dropdown);
-        app.component("Paginator", Paginator);
-        app.component("Breadcrumb", Breadcrumb);
-        app.component("ProgressSpinner", ProgressSpinner);
     },
 };

@@ -192,7 +192,7 @@ const submitForm = async () => {
                     <div class="shadow-lg h-full">
                         <div class="p-0 h-full min-h-[600px]">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d501725.41842284494!2d106.36556364999999!3d10.755292999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529292e8d3dd1%3A0xf15f5aad773c112b!2sHo%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2s!4v1699999999999!5m2!1sen!2s"
+                            :src="settings.google_map_link"
                                 width="100%" height="100%" style="border:0; border-radius: 0.5rem;" allowfullscreen=""
                                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                                 class="min-h-[600px]"></iframe>

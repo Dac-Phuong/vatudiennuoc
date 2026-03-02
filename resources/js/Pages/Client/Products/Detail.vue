@@ -4,6 +4,7 @@ import { Head, Link, usePage } from '@inertiajs/vue3'
 import ClientLayout from '@/Layouts/ClientLayout.vue';
 import ProductCard from '@/Components/client/Product/ProductCard.vue';
 import Breadcrumbs from '@/Components/client/Breadcrumbs.vue';
+import ShowImage from '@/Components/client/Product/ShowImage.vue';
 
 
 const props = defineProps({
@@ -81,7 +82,7 @@ const breadcrumbItems = computed(() => [
                     <div class="space-y-3">
                         <!-- Main Image -->
                         <div class="aspect-square h-[400px] w-full rounded-lg overflow-hidden border border-border">
-                            <Image :src="product.thumbnail" preview :alt="product.name"
+                            <ShowImage :src="product.thumbnail" preview :alt="product.name"
                                 class="w-full prod-image h-full object-cover hover:scale-105 transition-transform duration-300" />
                         </div>
                         <!-- Thumbnails -->
@@ -91,7 +92,7 @@ const breadcrumbItems = computed(() => [
                                     'w-24 h-24 rounded-md overflow-hidden border-2 cursor-pointer transition-all duration-200',
                                     product.thumbnail === image.image_path ? 'border-primary' : 'border-border hover:border-accent'
                                 ]">
-                                <Image :src="image.image_path" :alt="`${product.name} ${index + 1}`"
+                                <ShowImage :src="image.image_path" :alt="`${product.name} ${index + 1}`"
                                     class="w-full h-full object-cover" />
                             </div>
                         </div>
@@ -165,7 +166,7 @@ const breadcrumbItems = computed(() => [
                         Sản phẩm cùng loại
                     </span>
                 </h3>
-                <div class="mt-1 relative">
+                <div class="mt-1 product-detail relative">
                     <Carousel :value="relatedProducts" :numVisible="4" :numScroll="1"
                         :responsiveOptions="responsiveOptions" circular :autoplayInterval="3000">
                         <template #item="slotProps">
@@ -226,8 +227,15 @@ const breadcrumbItems = computed(() => [
 
 .prod-image img {
     width: 100% !important;
-    height: 100% !important;
+    max-height: 180px !important;
     object-fit: cover !important;
+    transition: transform 0.3s ease;
+}
+
+.product-detail .p-carousel-item img {
+    width: 100% !important;
+    max-height: 200px !important;
+    object-fit: contain !important;
     transition: transform 0.3s ease;
 }
 

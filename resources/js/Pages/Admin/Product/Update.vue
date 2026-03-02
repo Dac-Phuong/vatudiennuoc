@@ -99,9 +99,9 @@ const submitProduct = () => {
                 </div>
 
                 <TabView v-model:activeIndex="activeTab" class="mt-4">
-                    <!-- Tab 1: Thông tin cơ bản -->
-                    <TabPanel header="Thông tin cơ bản">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Tab 2: Chi tiết -->
+                    <TabPanel header="Chi tiết sản phẩm">
+                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block mb-2">Tên sản phẩm *</label>
                                 <InputText v-model="productData.name"
@@ -116,10 +116,6 @@ const submitProduct = () => {
                             </div>
 
                         </div>
-                    </TabPanel>
-
-                    <!-- Tab 2: Chi tiết -->
-                    <TabPanel header="Chi tiết sản phẩm">
                         <div class="space-y-4 mt-4">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>

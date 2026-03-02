@@ -17,6 +17,7 @@ class News extends Model
         'is_show',
         'is_pin',
         'thumbnail',
+        'tags',
         'short_description',
     ];
     public const STATUS_ACTIVE = 1;

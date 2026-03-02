@@ -80,6 +80,7 @@ Route::prefix('@admin')->group(function () {
         // settings
         Route::get('settings', [SettingsController::class, 'index'])->name('admin.settings');
         Route::post('settings/update', [SettingsController::class, 'update'])->name('admin.settings.update');
+        Route::post('image/delete/{key}', [\App\Http\Controllers\UploadController::class, 'deleteImage'])->name('image.delete');
     });
 });
 

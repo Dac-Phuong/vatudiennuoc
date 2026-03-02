@@ -27,8 +27,7 @@ class SettingsController extends Controller
     }
     public function update(Request $request)
     {
-        $data = $request->all();
-        $this->settingService()->updateSetting($data);
+        $this->settingService()->updateSetting($request);
         return redirect()->back();
     }
 }

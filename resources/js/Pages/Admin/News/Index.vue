@@ -252,7 +252,7 @@ const deleteNews = (data) => {
                 </Column>
                 <Column field="author_id" header="Tác giả">
                     <template #body="{ data }">
-                        <Tag severity="info">{{ data.author?.full_name }}</Tag>
+                        <Tag severity="info">{{ data.author?.account }}</Tag>
                     </template>
                 </Column>
                 <Column field="views" header="Lượt xem" sortable>

@@ -20,13 +20,13 @@ const props = defineProps({
                     </h3>
                 </div>
                 <div class="relative w-full h-[150px] md:h-[340px] mb-6 rounded-xl overflow-hidden shadow-lg"
-                    v-if="productBrands.logo">
-                    <img :src="productBrands.logo" alt="Banner thương hiệu" class="w-full h-full  md:object-cover" />
+                    v-if="productBrands?.logo">
+                    <img :src="productBrands?.logo" alt="Banner thương hiệu" class="w-full h-full  md:object-cover" />
 
                 </div>
                 <!-- Danh sách sản phẩm -->
                 <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 mt-4">
-                    <ProductCard v-for="p in productBrands.products" :key="p.id" :product="p" />
+                    <ProductCard v-for="p in productBrands?.products" :key="p.id" :product="p" />
                 </div>
 
                 <!-- Nút xem thêm -->

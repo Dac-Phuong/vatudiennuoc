@@ -4,10 +4,11 @@ import Carousel from "primevue/carousel";
 import { Link, usePage } from "@inertiajs/vue3";
 
 const { categories, settings } = usePage().props;
-const banners = ref(JSON.parse(settings?.banners) || [
+const defaultBanners = [
     { id: 3, image: "https://bizweb.dktcdn.net/100/168/021/themes/833502/assets/slider_1.jpg?1753857903607" },
-]);
+];
 
+const banners = ref( settings?.banners  ? JSON.parse(settings.banners) : defaultBanners);
 </script>
 
 <template>
@@ -24,7 +25,7 @@ const banners = ref(JSON.parse(settings?.banners) || [
                         <li v-for="cat in categories" :key="cat.id"
                             class="flex items-center justify-between rounded-lg hover:bg-primary hover:text-white cursor-pointer transition">
                             <Link :href="route('products.category', cat.slug)" class="flex-1 px-3 py-2">
-                            <span>{{ cat.name }}</span>
+                                <span>{{ cat.name }}</span>
                             </Link>
                             <!-- <i class="pi pi-angle-right text-emerald-400"></i> -->
                         </li>

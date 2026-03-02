@@ -37,7 +37,7 @@ const props = defineProps({
 
                                 <div class="flex items-center gap-4 text-sm text-gray-600 mb-3">
                                     <span class="font-medium text-blue-600">
-                                        {{ firstNews.author?.full_name || 'Không rõ tác giả' }}
+                                        {{ firstNews.author?.account || 'Không rõ tác giả' }}
                                     </span>
                                     <span>{{ formatDate(firstNews.created_at) }}</span>
                                 </div>
@@ -69,7 +69,7 @@ const props = defineProps({
                                         {{ article.title }}
                                     </h3>
                                     <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
-                                        <span class="font-medium text-blue-600">{{ article.author?.full_name }}</span>
+                                        <span class="font-medium text-blue-600">{{ article.author?.account }}</span>
                                         <span>{{ formatDate(article.created_at) }}</span>
                                     </div>
                                     <p class="text-xs text-gray-700 leading-relaxed line-clamp-2">

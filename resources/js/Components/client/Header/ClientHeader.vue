@@ -10,6 +10,7 @@ const showMobileMenu = ref(false)
 const showCategoryMenu = ref(false)
 const isScrolled = ref(false)
 const page = usePage();
+const isMobile = window.innerWidth < 768
 
 const navigationItems = ref([
     { name: "Trang chủ", url: '/', icon: 'pi pi-home' },
@@ -19,10 +20,9 @@ const navigationItems = ref([
 ])
 
 
-const toggleCategoryMenu = () => {
-    if (page.url === '/') return;
-    showCategoryMenu.value = !showCategoryMenu.value
-}
+const toggleCategoryMenu = () =>
+    (isMobile || page.url !== '/') &&
+    (showCategoryMenu.value = !showCategoryMenu.value)
 
 const handleScroll = () => {
     isScrolled.value = window.scrollY > 100
@@ -41,7 +41,7 @@ onUnmounted(() => {
         <div class="bg-white shadow transition-all duration-500">
             <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <Logo />
+                    <Logo :settings="settings" />
                 </div>
 
                 <!-- Search box -->
@@ -83,7 +83,7 @@ onUnmounted(() => {
                                             class="flex items-center justify-between rounded-lg hover:bg-primary hover:text-white cursor-pointer transition">
                                             <Link :href="route('products.category', cat.slug)"
                                                 class="flex-1 px-3 py-2 ">
-                                            <span>{{ cat.name }}</span>
+                                                <span>{{ cat.name }}</span>
                                             </Link>
                                         </li>
                                     </ul>
@@ -96,7 +96,7 @@ onUnmounted(() => {
                                     'text-orange-300 border-b-2 border-orange-300': usePage().url === item.url,
                                     'hover:text-orange-300': usePage().url !== item.url
                                 }">
-                            {{ item.name }}
+                                {{ item.name }}
                             </Link>
                         </nav>
                         <div class="flex items-center space-x-2 text-white">
@@ -125,8 +125,8 @@ onUnmounted(() => {
                         ? 'bg-gray-200 text-primary font-semibold'
                         : 'text-gray-700 hover:bg-gray-100 hover:text-primary'
                 ]">
-                <i :class="[item.icon, 'text-lg']"></i>
-                <span class="text-base">{{ item.name }}</span>
+                    <i :class="[item.icon, 'text-lg']"></i>
+                    <span class="text-base">{{ item.name }}</span>
                 </Link>
             </nav>
         </Drawer>

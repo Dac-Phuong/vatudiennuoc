@@ -7,6 +7,7 @@ import formatDate from '@/utils/formatDate';
 import { debounce } from 'lodash';
 import { ref, watch } from 'vue';
 import formatNumber from '@/utils/formatNumber';
+import ShowImage from '@/Components/client/Product/ShowImage.vue';
 
 // state
 const props = defineProps({
@@ -116,7 +117,7 @@ const submitDelete = (data) => {
                 </Column>
                 <Column field="thumbnail" header="Hình ảnh">
                     <template #body="{ data }">
-                        <Image preview :src="data.thumbnail" alt="" class="w-16 h-16 object-cover" />
+                        <ShowImage :type="0" preview :src="data.thumbnail" alt="" class="w-16 h-16 object-cover"   />
                     </template>
                 </Column>
                 <Column field="name" header="Tên sản phẩm" style="max-width: 200px;">

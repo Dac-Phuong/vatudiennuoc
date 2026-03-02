@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'id'        => 'required|numeric|exists:users,id',
-            'full_name' => 'nullable|string|max:255',
+            'account' => 'nullable|string|max:255',
             'email'     => 'nullable|email|max:255',
             'role'      => 'nullable|numeric|in:0,1,100',
             'balance'   => 'nullable|numeric|min:0',
